@@ -34,9 +34,19 @@ def dict_invert_01(input_dict):
 # 2. get 메서드를 사용한 방법
 def dict_invert_02(input_dict):
     # TODO: get()의 기본값으로 빈 리스트를 활용해 작성하세요
-    pass
+    
+    em_dict = {}
+    for k, v in input_dict.items():
+        em_dict[v] = em_dict.get(v,[]) +[k]
+        
+    return em_dict
+'''
+input dict - 키 밸류 
+빈딕셔너리 - 밸류 키로 넣어야함.
+get k = v를 도출
+emdict v - > get k
 
-
+'''
 # =============================================================
 # [실습 포인트 3] defaultdict - 빈 리스트 자동 생성
 # - defaultdict(list)는 없는 키를 조회하면 []를 자동 생성
@@ -49,7 +59,11 @@ from collections import defaultdict
 def dict_invert_03(input_dict):
     # TODO: defaultdict(list)를 사용해 가장 간결하게 작성하세요
     pass
-
+    em_dict = defaultdict(list)
+    for k, v in input_dict.items():
+        em_dict[v].append(k)
+    return dict(em_dict)
+    
 
 # -------------------------------------------------------------
 # 테스트 케이스
